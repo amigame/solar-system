@@ -1684,10 +1684,13 @@ Three.prototype.webglMaterial = function( attributes ){
 			color: 0x000000,
 			wireframe: false,
 			map: false,
+			transparent: true,
+			//opacity: 1,
 			scene: this.active.scene
 		};
 
 		var options = $.extend(defaults, attributes);
+
 		// grab the shaders from the global space
 		var shaders = window.Shaders || {};
 
@@ -1708,6 +1711,9 @@ Three.prototype.webglMaterial = function( attributes ){
 			if( options.map ) settings.map = THREE.ImageUtils.loadTexture( options.map );
 			if( options.color && !options.map ) settings.color = options.color;
 			if( options.wireframe ) settings.wireframe = options.wireframe;
+			if( options.transparent ) settings.transparent = options.transparent;
+			//if( options.opacity ) settings.opacity = options.opacity;
+			//settings.depthWrite = false;
 			material = new THREE.MeshBasicMaterial( settings );
 
 		}
@@ -1777,7 +1783,9 @@ Three.prototype.webglSphere = function( attributes ){
 			segments : 16,
 			rings : 16,
 			color: 0x000000,
+			//transparent: true,
 			wireframe: false,
+			//opacity: 1,
 			map: false,
 			scene: this.active.scene
 		};
