@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>jQuery Three :: Earth</title>
+		<meta charset="utf-8">
+		<!-- common styles in examples -->
+		<link rel="stylesheet" href="assets/css/styles.css" type="text/css" media="screen">
+
+		<style type="text/css">
+
+			scene {
+				background-image: url(assets/img/skybox/stars/px.jpg), url(assets/img/skybox/stars/nx.jpg), url(assets/img/skybox/stars/py.jpg), url(assets/img/skybox/stars/ny.jpg), url(assets/img/skybox/stars/pz.jpg), url(assets/img/skybox/stars/nz.jpg);
+			}
+
+			#main-cam {
+				-webkit-transform: translate3d(0, 0, 1000px);
+				/* -webkit-backface-visibility: hidden;
+				-webkit-perspective: 1000; */
+			}
+
+			.earth {
+				background-image: url(assets/img/planets/earth/earth_geography_1k.jpg);
+			}
+
+			@-moz-keyframes rotate360 {
+				from { -moz-transform: rotateY(0deg); }
+				to { -moz-transform: rotateY(360deg); }
+			}
+
+			@-webkit-keyframes rotate360 {
+				from { -webkit-transform: rotateY(0deg); }
+				to { -webkit-transform: rotateY(360deg); }
+			}
+
+			@keyframes rotate360 {
+				from { transform:rotateY(0deg); }
+				to { transform:rotateY(360deg); }
+			}
+
+			.rotating {
+				-webkit-animation: rotate360 60s linear infinite;
+				-moz-animation: rotate360 60s linear infinite;
+				animation: rotate360 60s linear infinite;
+			}
+
+		</style>
+
+	</head>
+
+	<body>
+
+	<header>
+	</header>
+
+		<div id="main">
+			<scene id="first">
+				<camera id="main-cam" class="perspective" data-fov="30" data-far="4000"></camera>
+				<sphere class="earth rotating" data-radius="200" data-segments="40" data-rings="30"></sphere>
+			</scene>
+		</div>
+
+		<!-- deps -->
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="assets/js/libs/three.min.js"></script>
+
+		<!-- lib -->
+		<script type="text/javascript" src="assets/js/libs/jquery.three.js"></script>
+
+		<!-- helpers -->
+		<script type="text/javascript" src="assets/js/helpers/lookaround.js"></script>
+
+		<!-- logic -->
+		<script type="text/javascript">
+
+			// initiate 3d environemnt
+			$("#main").three();
+
+			// add event listener
+			$("#main").on("update", LookArround);
+
+		</script>
+
+	</body>
+</html>
