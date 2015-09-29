@@ -1,0 +1,19 @@
+{
+	"name": "solar-system",
+	"version": "0.0.1",
+	"description": "A custom element for our solar system",
+	"license": "MIT",
+	"keywords": [
+			"amigame", "solar", "component", "web-components"
+	],
+	"main": "index.html",
+	"ignore": [
+		"bower_components",
+		"components",
+		"node_modules"
+	],
+	"dependencies": {
+		"construct" : "*",
+		"webcomponentsjs": "*"
+	}
+}
